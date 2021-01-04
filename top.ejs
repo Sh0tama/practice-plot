@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+　<title>グラフ</title> 
+</head>
+<body>
+  <h1>MPmax販売台数</h1>
+  <canvas id="myBarChart"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+
+  <script>
+  var ctx = document.getElementById("myBarChart");
+  var myBarChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['2010年', '2011年', '2012年', '2013年', '2014年', '2015年', '2016年', '2017年', '2018年', '2019年', '2020年'],
+      datasets: [
+        {
+          label: '年度別販売台数',
+          data: [62, 65, 93, 85, 51, 66, 47, 99, 100, 80, 20],
+          backgroundColor: "rgba(130,201,169,0.5)"
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: '販売台数'
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            suggestedMax: 120,
+            suggestedMin: 0,
+            stepSize: 10,
+            callback: function(value, index, values){
+              return  value +  '台'
+            }
+          }
+        }]
+      },
+    }
+  });
+  </script>
+</body>
+</html>
